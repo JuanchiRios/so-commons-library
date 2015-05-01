@@ -92,4 +92,15 @@ context (test_config) {
 
     } end
 
+    describe ("Inexistent file") {
+
+        t_config *config;
+
+        it ("tries to open a non-existent config file") {
+            config = config_create("this_doesnt_exist.really.dont.cfg");
+            should_ptr(config) be null;
+        } end
+
+    } end
+
 }
