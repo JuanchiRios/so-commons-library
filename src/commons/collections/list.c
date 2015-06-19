@@ -19,7 +19,7 @@
 #include "list.h"
 
 static void list_link_element(t_link_element* previous, t_link_element* next);
-static t_link_element* list_create_element(void* data);
+static t_link_element* list_create_element(void* data);l
 static t_link_element* list_get_element(t_list* self, int index);
 static t_link_element* list_find_element(t_list *self, bool(*condition)(void*), int* index);
 
@@ -146,7 +146,8 @@ void list_remove_and_destroy_element(t_list *self, int index, void(*element_dest
 
 void list_remove_and_destroy_by_condition(t_list *self, bool(*condition)(void*), void(*element_destroyer)(void*)) {
 	void* data = list_remove_by_condition(self, condition);
-	element_destroyer(data);
+	if (data)
+		element_destroyer(data);
 }
 
 int list_size(t_list *list) {
